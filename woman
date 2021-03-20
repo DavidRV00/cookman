@@ -1,4 +1,11 @@
 #!/bin/sh
+
+if [ $# -eq 1 -a "$1" = "--list" ]
+  then
+    curl -s https://based.cooking/ | grep --line-buffered -Po '(?<=a href\=\")[a-z0-9\-]+(?=\.html)' | sed 's/-/ /g' | sed 's/\b./\u&/g'
+    exit 0
+fi
+
 query="$@"
 suff="$(echo $query | sed 's/ /-/g' | awk '{print tolower($0)}')"
 pandoc -f html -t markdown https://based.cooking/$suff | less
