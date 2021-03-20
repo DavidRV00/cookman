@@ -1,5 +1,11 @@
 # woman
 man-pages like cli utility for based.cooking
 
-# Example
-$ ./woman Arroz Chaufa
+# Install
+$ sudo ./install
+
+# Uninstall
+$ sudo ./uninstall
+
+# Example Usage
+$ woman Arroz Chaufa
