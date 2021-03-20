@@ -27,3 +27,8 @@ $ sudo ./install
 ```
 $ sudo ./uninstall
 ```
+
+# Credits
+[based.cooking](https://based.cooking) by [Luke Smith](https://lukesmith.xyz)
+
+Concept and [woman.recipes site](http://woman.recipes) by [James M](https://github.com/dm17)
