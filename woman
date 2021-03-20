@@ -1,7 +1,6 @@
 #!/bin/sh
 
-if [ $# -eq 1 -a "$1" = "--list" ]
-  then
+if [ $# -eq 1 -a "$1" = "--list" ] ; then
     curl -s https://based.cooking/ | grep --line-buffered -Po '(?<=a href\=\")[a-z0-9\-]+(?=\.html)' | sed 's/-/ /g' | sed 's/\b./\u&/g'
     exit 0
 fi
@@ -11,6 +10,22 @@ if ! type "pandoc" > /dev/null; then
   exit 1
 fi
 
+get_as_md() {
+  pandoc -f html -t markdown https://based.cooking/$suff
+}
+
+use_pager=true
+
+if [ $# -ne 0 -a "$1" = "--stdout" ] ; then
+  shift
+  use_pager=false
+fi
+
 query="$@"
+
 suff="$(echo $query | sed 's/ /-/g' | awk '{print tolower($0)}')"
-pandoc -f html -t markdown https://based.cooking/$suff | ${PAGER:-less}
+if [ "$use_pager" = false ] ; then
+  get_as_md
+  exit 0
+fi
+get_as_md | ${PAGER:-less}

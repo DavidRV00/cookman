@@ -8,6 +8,11 @@ $ woman Kale Banana Smoothie
 ```
 Note that queries are case-insensitive.
 
+You can also write a recipe to stdout instead of using a pager wit the `--stdout` flag:
+```
+$ woman --stdout Pasta Sauce
+```
+
 To list the names of all available recipes:
 ```
 $ woman --list
