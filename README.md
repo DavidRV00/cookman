@@ -4,7 +4,7 @@ man-pages like cli utility for based.cooking
 # Example Usage
 To view a recipe:
 ```
-$ woman Arroz Chaufa
+$ woman Kale Banana Smoothie
 ```
 
 To list the names of all available recipes:
