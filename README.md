@@ -6,6 +6,7 @@ To view a recipe:
 ```
 $ woman Kale Banana Smoothie
 ```
+Note that queries are case-insensitive.
 
 To list the names of all available recipes:
 ```
