@@ -1,0 +1,4 @@
+#!/bin/sh
+query="$@"
+suff="$(echo $query | sed 's/ /-/g' | awk '{print tolower($0)}')"
+pandoc -f html -t markdown https://based.cooking/$suff | less
