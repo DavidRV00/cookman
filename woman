@@ -18,12 +18,12 @@ fi
 
 query="$@"
 suff="$(echo $query | sed 's/ /-/g' | awk '{print tolower($0)}')"
-get_as_md() {
+print_as_md() {
   pandoc -f html -t markdown https://based.cooking/$suff
 }
 
 if [ "$use_pager" = false ] ; then
-  get_as_md
+  print_as_md
   exit 0
 fi
-get_as_md | ${PAGER:-less}
+print_as_md | ${PAGER:-less}
