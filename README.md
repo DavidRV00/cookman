@@ -24,7 +24,7 @@ $ woman --list | dmenu -l 5 -p "Select a recipe: " | xargs woman
 ```
 
 # Tab Completion
-Tab completion is available (currently only in bash).
+Tab completion for recipe names is available (currently only in bash).
 
 # Dependencies
 Install `pandoc` before using.
