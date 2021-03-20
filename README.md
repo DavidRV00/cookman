@@ -12,9 +12,14 @@ To list the names of all available recipes:
 ```
 $ woman --list
 ```
+This can be easily used to create recipe-selection menus with fzf or dmenu, for example:
+```
+$ woman --list | fzf | xargs woman
+$ woman --list | dmenu -l 5 -p "Select a recipe: " | xargs woman
+```
 
 # Tab Completion
-Tab completion is available (currently only in bash)
+Tab completion is available (currently only in bash).
 
 # Dependencies
 Install `pandoc` before using.
