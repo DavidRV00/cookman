@@ -10,19 +10,17 @@ if ! type "pandoc" > /dev/null; then
   exit 1
 fi
 
-get_as_md() {
-  pandoc -f html -t markdown https://based.cooking/$suff
-}
-
 use_pager=true
-
 if [ $# -ne 0 -a "$1" = "--stdout" ] ; then
   shift
   use_pager=false
 fi
 
-query="$@"
+get_as_md() {
+  pandoc -f html -t markdown https://based.cooking/$suff
+}
 
+query="$@"
 suff="$(echo $query | sed 's/ /-/g' | awk '{print tolower($0)}')"
 if [ "$use_pager" = false ] ; then
   get_as_md
