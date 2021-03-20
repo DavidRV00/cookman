@@ -1,0 +1,13 @@
+_woman_complete()
+{
+  words=`woman --list`
+  COMPREPLY=()
+  cur=${COMP_WORDS[COMP_CWORD]}
+  prev=${COMP_WORDS[COMP_CWORD-1]}
+
+  local IFS=$'\n'
+  COMPREPLY=( $( grep -i "^$cur" <( echo "$words" ) | sed -e 's/ /\\ /g' ) )
+  return 0
+}
+
+complete -o bashdefault -o default -o nospace -F _woman_complete woman

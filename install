@@ -1,2 +1,5 @@
 #!/bin/sh
 cp woman /usr/local/bin/
+
+mkdir -p /etc/bash_completion.d
+cp woman-bash-completion /etc/bash_completion.d/

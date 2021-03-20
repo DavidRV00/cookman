@@ -12,6 +12,9 @@ To list the names of all available recipes:
 $ woman --list
 ```
 
+# Tab Completion
+Tab completion is avilable (currently only in bash)
+
 # Dependencies
 Install `pandoc` before using.
 
