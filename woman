@@ -16,12 +16,12 @@ if [ $# -ne 0 -a "$1" = "--stdout" ] ; then
   use_pager=false
 fi
 
+query="$@"
+suff="$(echo $query | sed 's/ /-/g' | awk '{print tolower($0)}')"
 get_as_md() {
   pandoc -f html -t markdown https://based.cooking/$suff
 }
 
-query="$@"
-suff="$(echo $query | sed 's/ /-/g' | awk '{print tolower($0)}')"
 if [ "$use_pager" = false ] ; then
   get_as_md
   exit 0
