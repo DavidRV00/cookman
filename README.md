@@ -13,7 +13,7 @@ $ woman --list
 ```
 
 # Tab Completion
-Tab completion is avilable (currently only in bash)
+Tab completion is available (currently only in bash)
 
 # Dependencies
 Install `pandoc` before using.
