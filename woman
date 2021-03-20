@@ -6,6 +6,11 @@ if [ $# -eq 1 -a "$1" = "--list" ]
     exit 0
 fi
 
+if ! type "pandoc" > /dev/null; then
+  echo "Install pandoc first."
+  exit 1
+fi
+
 query="$@"
 suff="$(echo $query | sed 's/ /-/g' | awk '{print tolower($0)}')"
 pandoc -f html -t markdown https://based.cooking/$suff | ${PAGER:-less}
