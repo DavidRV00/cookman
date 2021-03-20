@@ -1,7 +1,16 @@
 #!/bin/sh
 
-if [ $# -eq 1 -a "$1" = "--list" ] ; then
-    curl -s https://based.cooking/ | grep --line-buffered -Po '(?<=a href\=\")[a-z0-9\-]+(?=\.html)' | sed 's/-/ /g' | sed 's/\b./\u&/g'
+if [ $# -ne 0 -a "$1" = "--tags" ] ; then
+    curl -s "https://based.cooking/" | sed 's/, /\n/g' | grep --line-buffered -Po '(?<=a href\=\"@)[a-z0-9\-]+(?=\.html)'
+    exit 0
+fi
+
+if [ $# -ne 0 -a "$1" = "--list" ] ; then
+    tag=""
+    if [ $# -ne 1 ] ; then
+      tag="@$2"
+    fi
+    curl -s "https://based.cooking/$tag" | grep --line-buffered -Po '(?<=a href\=\")[a-z0-9\-]+(?=\.html)' | sed 's/-/ /g' | sed 's/\b./\u&/g'
     exit 0
 fi
 

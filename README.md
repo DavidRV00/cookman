@@ -2,6 +2,7 @@
 man-pages like cli utility for [based.cooking](https://based.cooking)
 
 # Example Usage
+## Viewing a recipe
 To view a recipe:
 ```
 $ woman Kale Banana Smoothie
@@ -13,13 +14,24 @@ You can also write a recipe to standard output instead of using a pager with the
 $ woman --stdout Pasta Sauce
 ```
 
+## Tags and Lists
+To list all of the available tags:
+```
+$ woman --tags
+```
+
 To list the names of all available recipes:
 ```
 $ woman --list
 ```
-This can be easily used to create recipe-selection menus with fzf or dmenu, for example:
+Or optionally, pass `--list` a tag name to list all of the recipes with that tag:
 ```
-$ woman --list | fzf | xargs woman
+$ woman --list portuguese
+```
+
+The `--tags` and `--list` flags can be easily used to create recipe-selection menus with fzf or dmenu, for example:
+```
+$ woman --tags | fzf | xargs woman --list
 $ woman --list | dmenu -l 5 -p "Select a recipe: " | xargs woman
 ```
 
