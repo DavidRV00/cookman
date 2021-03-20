@@ -10,7 +10,11 @@ $ woman Arroz Chaufa
 Install `pandoc` before using.
 
 # Install
+```
 $ sudo ./install
+```
 
 # Uninstall
+```
 $ sudo ./uninstall
+```
