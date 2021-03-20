@@ -33,6 +33,7 @@ Install `pandoc` before using.
 ```
 $ sudo ./install
 ```
+Or just copy `woman` into a directory on your `$PATH` and `woman-bash-completion` into `/etc/bash_completion.d`.
 
 # Uninstall
 ```
