@@ -1,3 +1,4 @@
 #!/bin/sh
 rm /usr/local/bin/woman
-rm /etc/bash_completion.d/woman-bash-completion
+rm /etc/bash_completion.d/woman
+rm /usr/share/zsh/functions/Completion/Unix/_woman
