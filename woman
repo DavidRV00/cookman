@@ -8,7 +8,7 @@ fi
 if [ $# -ne 0 -a "$1" = "--list" ] ; then
     tag=""
     if [ $# -ne 1 ] ; then
-      tag="@$2"
+      tag="$(echo @$2 | awk '{print tolower($0)}')"
     fi
     curl -s "https://based.cooking/$tag" | grep --line-buffered -Po '(?<=a href\=\")[a-z0-9\-]+(?=\.html)' | sed 's/-/ /g' | sed 's/\b./\u&/g' | sort | uniq
     exit 0
