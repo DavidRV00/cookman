@@ -40,6 +40,8 @@ Tab completion for recipe names is available in bash and zsh.
 
 If you've just now installed `woman` or copied the completion files to their completion directories, you may need to restart your shell before they work.
 
+Getting programmable completion to work for your shell in general may require additional setup in your system. If at first it doesn't work, make sure you've done the necessary setup for your distro.
+
 # Dependencies
 Install `pandoc` before using.
 
