@@ -38,6 +38,8 @@ $ woman --list | dmenu -l 5 -p "Select a recipe: " | xargs woman
 # Tab Completion
 Tab completion for recipe names is available in bash and zsh.
 
+If you've just now installed `woman` or copied the completion files to their completion directories, you may need to restart your shell before they work.
+
 # Dependencies
 Install `pandoc` before using.
 
