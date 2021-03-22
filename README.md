@@ -15,24 +15,25 @@ $ woman --stdout Pasta Sauce
 ```
 
 ## Tags and Lists
-To list all of the available tags:
+To list the names of all recipes:
+```
+$ woman --list
+```
+
+To list all of the tags:
 ```
 $ woman --tags
 ```
 
-To list the names of all available recipes:
-```
-$ woman --list
-```
-Or optionally, pass `--list` a tag name to list all of the recipes with that tag:
+Or optionally, pass a tag name to `--list` to print all of the recipes with that tag:
 ```
 $ woman --list portuguese
 ```
 
-The `--tags` and `--list` flags can be easily used to create recipe-selection menus with fzf or dmenu, for example:
+The `--list` and `--tags` flags can be easily used to create recipe-selection menus with tools like fzf or dmenu, for example:
 ```
 $ woman --tags | fzf | xargs woman --list
-$ woman --list | dmenu -l 5 -p "Select a recipe: " | xargs woman
+$ woman --list | dmenu -l 5 -p "Select a recipe: " | xargs woman --stdout
 ```
 
 # Tab Completion
