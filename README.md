@@ -33,7 +33,7 @@ $ woman --list portuguese
 The `--list` and `--tags` flags can be easily used to create recipe-selection menus with tools like fzf or dmenu, for example:
 ```
 $ woman --tags | fzf | xargs woman --list
-$ woman --list | dmenu -l 5 -p "Select a recipe: " | xargs woman --stdout
+$ woman --list | dmenu -l 5 | xargs woman --stdout
 ```
 
 # Tab Completion
