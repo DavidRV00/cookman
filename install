@@ -1,8 +1,12 @@
 #!/bin/sh
-cp woman /usr/local/bin/
+bin="/usr/local/bin/"
+bash_completion="/etc/bash_completion.d/"
+zsh_completion="/usr/share/zsh/functions/Completion/Unix/"
 
-mkdir -p /etc/bash_completion.d/
-cp completion/bash/woman /etc/bash_completion.d/woman
+cp woman $bin
 
-mkdir -p /usr/share/zsh/functions/Completion/Unix/
-cp completion/zsh/_woman /usr/share/zsh/functions/Completion/Unix/_woman
+mkdir -p $bash_completion
+cp completion/bash/woman $bash_completion
+
+mkdir -p $zsh_completion
+cp completion/zsh/_woman $zsh_completion
