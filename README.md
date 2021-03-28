@@ -5,7 +5,7 @@ man-pages like cli utility for [based.cooking](https://based.cooking)
 ## Viewing a recipe
 To view a recipe:
 ```
-$ woman Kale Banana Smoothie
+$ woman Aglio E Olio
 ```
 Note that queries are case-insensitive.
 
