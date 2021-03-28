@@ -1,3 +1,6 @@
 #compdef woman
 
-_alternative "args:recipe name:($(woman --list | sed 's/ /\\ /g'))"
+_arguments \
+  "1:recipe name:($(woman --list | sed 's/ /\\ /g'))" \
+  "--list[list recipes]:tag:($(woman --tags))" \
+  "--tags[list tags]"
