@@ -28,7 +28,9 @@ fi
 query="$@"
 suff="$(echo $query | sed 's/ /-/g' | awk '{print tolower($0)}')"
 print_as_md() {
-  pandoc -f html -t markdown https://based.cooking/$suff | sed '/^:::.*$/d'
+  pandoc -f html -t markdown https://based.cooking/$suff \
+    | sed '/^:::.*$/d' \
+    | sed '/^\[homepage\].*$/d'
 }
 
 if [ "$use_pager" = false ] ; then
