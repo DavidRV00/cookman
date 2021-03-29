@@ -1,13 +1,37 @@
-_woman_complete()
-{
-  words=`woman --list`
+#!/bin/sh
+
+_woman_complete() {
   COMPREPLY=()
   cur=${COMP_WORDS[COMP_CWORD]}
   prev=${COMP_WORDS[COMP_CWORD-1]}
 
-  local IFS=$'\n'
-  COMPREPLY=( $( grep -i "^$cur" <( echo "$words" ) | sed -e 's/ /\\ /g' ) )
-  return 0
+  dashoptions='--list --tags'
+
+  case "$prev" in
+  woman)
+    case "$cur" in
+    -*)
+      COMPREPLY=( $( compgen -W "$dashoptions" -- $cur ) )
+      return 0
+
+    ;;
+    *)
+      local IFS=$'\n'
+      names=`woman --list`
+      COMPREPLY=( $( grep -i "^$cur" <( echo "$names" ) | sed -e 's/ /\\ /g' ) )
+      return 0
+
+    ;;
+    esac
+
+  ;;
+  --list)
+    tags=`woman --tags`
+    COMPREPLY=( $( grep -i "^$cur" <( echo "$tags" ) ) )
+    return 0
+
+  ;;
+  esac
 }
 
 complete -o bashdefault -o default -o nospace -F _woman_complete woman
