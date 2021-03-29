@@ -5,7 +5,7 @@ _woman_complete() {
   cur=${COMP_WORDS[COMP_CWORD]}
   prev=${COMP_WORDS[COMP_CWORD-1]}
 
-  dashoptions='--list --tags'
+  dashoptions='--list --tags --stdout'
 
   case "$prev" in
   woman)
@@ -23,6 +23,13 @@ _woman_complete() {
 
     ;;
     esac
+
+  ;;
+  --stdout)
+    local IFS=$'\n'
+    names=`woman --list`
+    COMPREPLY=( $( grep -i "^$cur" <( echo "$names" ) | sed -e 's/ /\\ /g' ) )
+    return 0
 
   ;;
   --list)

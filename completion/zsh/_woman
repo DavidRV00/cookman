@@ -2,5 +2,6 @@
 
 _arguments \
   "1:recipe name:($(woman --list | sed 's/ /\\ /g'))" \
+  "--stdout[print to standard output]:recipe name:($(woman --list | sed 's/ /\\ /g'))" \
   "--list[list recipes]:tag:($(woman --tags))" \
   "--tags[list tags]"
