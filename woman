@@ -11,7 +11,7 @@ fi
 if [ $# -ne 0 -a "$1" = "--list" ] ; then
   tag=""
   if [ $# -ne 1 ] ; then
-    tag="$(echo @$2 | awk '{print tolower($0)}')"
+    tag="$(echo @$2 | awk '{print tolower($0)}').html"
   fi
   curl -s "https://based.cooking/$tag" \
     | grep --line-buffered -Po '(?<=a href\=\")[a-z0-9\-]+(?=\.html)' \
@@ -35,7 +35,7 @@ fi
 query="$@"
 suff="$(echo $query | sed 's/ /-/g' | awk '{print tolower($0)}')"
 print_as_md() {
-  pandoc -f html -t markdown https://based.cooking/$suff \
+  pandoc -f html -t markdown https://based.cooking/$suff.html \
     | sed '/^:::.*$/d' \
     | sed '/^\[homepage\].*$/d'
 }
