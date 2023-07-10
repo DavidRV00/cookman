@@ -3,10 +3,10 @@ bin="/usr/local/bin/"
 bash_completion="/etc/bash_completion.d/"
 zsh_completion="/usr/share/zsh/functions/Completion/Unix/"
 
-cp woman $bin
+cp cookman $bin
 
 mkdir -p $bash_completion
-cp completion/bash/woman $bash_completion
+cp completion/bash/cookman $bash_completion
 
 mkdir -p $zsh_completion
-cp completion/zsh/_woman $zsh_completion
+cp completion/zsh/_cookman $zsh_completion

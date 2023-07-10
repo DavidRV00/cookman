@@ -1,9 +1,9 @@
 #!/bin/sh
 
 if [ $# -ne 0 -a "$1" = "--tags" ] ; then
-  curl -s "https://based.cooking/" \
+  curl -s "https://based.cooking/tags/" \
     | sed 's/, /\n/g' \
-    | grep --line-buffered -Po '(?<=a href\=\"@)[a-z0-9\-]+(?=\.html)' \
+    | grep --line-buffered -Po '(?<=a href\=\"\/tags\/)[a-z0-9\-]+' \
     | sort | uniq
   exit 0
 fi
@@ -11,10 +11,17 @@ fi
 if [ $# -ne 0 -a "$1" = "--list" ] ; then
   tag=""
   if [ $# -ne 1 ] ; then
-    tag="$(echo @$2 | awk '{print tolower($0)}').html"
+    tag="tags/$(echo $2 | awk '{print tolower($0)}')/"
+		# The URLs in the href tags are different within tag pages than they are from main page.
+		curl -s "https://based.cooking/$tag" \
+			| grep --line-buffered -Po '(?<=a href\=\"\/)[a-z0-9\-]+' \
+			| sed 's/-/ /g' \
+			| sed 's/\b./\u&/g' \
+			| sort | uniq
+		exit 0
   fi
   curl -s "https://based.cooking/$tag" \
-    | grep --line-buffered -Po '(?<=a href\=\")[a-z0-9\-]+(?=\.html)' \
+    | grep --line-buffered -Po '(?<=a href\=\"https:\/\/based\.cooking\/)[a-z0-9\-]+' \
     | sed 's/-/ /g' \
     | sed 's/\b./\u&/g' \
     | sort | uniq
@@ -35,9 +42,10 @@ fi
 query="$@"
 suff="$(echo $query | sed 's/ /-/g' | awk '{print tolower($0)}')"
 print_as_md() {
-  pandoc -f html -t markdown https://based.cooking/$suff.html \
+  pandoc -f html -t markdown https://based.cooking/$suff \
     | sed '/^:::.*$/d' \
-    | sed '/^\[homepage\].*$/d'
+    | sed '/^\[homepage\].*$/d' \
+    | sed '/^<\/\?div>$/d'
 }
 
 if [ "$use_pager" = false ] ; then

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-_woman_complete() {
+_cookman_complete() {
   COMPREPLY=()
   cur=${COMP_WORDS[COMP_CWORD]}
   prev=${COMP_WORDS[COMP_CWORD-1]}
@@ -8,7 +8,7 @@ _woman_complete() {
   dashoptions='--list --tags --stdout'
 
   case "$prev" in
-  woman)
+  cookman)
     case "$cur" in
     -*)
       COMPREPLY=( $( compgen -W "$dashoptions" -- $cur ) )
@@ -17,7 +17,7 @@ _woman_complete() {
     ;;
     *)
       local IFS=$'\n'
-      names=`woman --list`
+      names=`cookman --list`
       COMPREPLY=( $( grep -i "^$cur" <( echo "$names" ) | sed -e 's/ /\\ /g' ) )
       return 0
 
@@ -27,13 +27,13 @@ _woman_complete() {
   ;;
   --stdout)
     local IFS=$'\n'
-    names=`woman --list`
+    names=`cookman --list`
     COMPREPLY=( $( grep -i "^$cur" <( echo "$names" ) | sed -e 's/ /\\ /g' ) )
     return 0
 
   ;;
   --list)
-    tags=`woman --tags`
+    tags=`cookman --tags`
     COMPREPLY=( $( grep -i "^$cur" <( echo "$tags" ) ) )
     return 0
 
@@ -41,4 +41,4 @@ _woman_complete() {
   esac
 }
 
-complete -o bashdefault -o default -o nospace -F _woman_complete woman
+complete -o bashdefault -o default -o nospace -F _cookman_complete cookman

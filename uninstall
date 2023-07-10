@@ -1,4 +1,4 @@
 #!/bin/sh
-rm /usr/local/bin/woman
-rm /etc/bash_completion.d/woman
-rm /usr/share/zsh/functions/Completion/Unix/_woman
+rm /usr/local/bin/cookman
+rm /etc/bash_completion.d/cookman
+rm /usr/share/zsh/functions/Completion/Unix/_cookman

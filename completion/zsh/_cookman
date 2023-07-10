@@ -1,0 +1,7 @@
+#compdef cookman
+
+_arguments \
+  "1:recipe name:($(cookman --list | sed 's/ /\\ /g'))" \
+  "--stdout[print to standard output]:recipe name:($(cookman --list | sed 's/ /\\ /g'))" \
+  "--list[list recipes]:tag:($(cookman --tags))" \
+  "--tags[list tags]"
