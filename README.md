@@ -60,4 +60,4 @@ $ sudo ./uninstall
 # Credits
 [based.cooking](https://based.cooking) by [Luke Smith](https://lukesmith.xyz)
 
-[Concept](https://www.youtube.com/watch?v=ykNEkiYr0QM&lc=Ugz6nFsr1PlL2x4oJaF4AaABAg) and [cookman.recipes site](http://cookman.recipes) by [James M](https://github.com/dm17)
+[Concept](https://www.youtube.com/watch?v=ykNEkiYr0QM&lc=Ugz6nFsr1PlL2x4oJaF4AaABAg) by [James M](https://github.com/dm17)
